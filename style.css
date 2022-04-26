@@ -138,6 +138,7 @@ main {
 .chat-messages {
     margin-top: 20px;
     width: fit-content;
+    min-width: 300px;
     max-width: 400px;
     /* height: 50px; */
     min-height: 50px;
