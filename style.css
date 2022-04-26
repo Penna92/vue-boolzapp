@@ -26,27 +26,41 @@ main {
     border-right: 1px solid rgb(177, 177, 177);
 }
 
-.user-profile {
+.right-container {
+    width: 65%;
+}
+
+.user-profile,
+.contact-profile,
+#write-message {
     height: 80px;
     line-height: 80px;
     background-color: rgb(234, 234, 234);
 }
 
-.user-profile-left {
+.user-profile-left,
+.contact-profile-left {
     height: 100%;
 }
 
-.user-profile-img {
+.user-profile-img,
+.contact-profile-img {
     height: 100%;
     border-radius: 50%;
 }
 
-.user-profile-img img {
+.user-profile-img img,
+.contact-profile-img img {
     height: 80%;
     border-radius: 50%;
 }
 
-.user-profile-right i {
+.contact-profile-name span {
+    line-height: 20px;
+}
+
+.user-profile-right i,
+.contact-profile-right i {
     margin-right: 10px;
     font-size: 20px;
     color: rgb(177, 177, 177);
@@ -81,7 +95,8 @@ main {
 
 .fa-magnifying-glass,
 #last-message,
-#last-message-time {
+#last-message-time,
+#last-access {
     color: rgb(177, 177, 177);
 }
 
@@ -92,15 +107,29 @@ main {
 
 .left-container>.user-list>ul>li {
     list-style-type: none;
-    border: 1px solid rgb(233,235,235);
+    border: 1px solid rgb(233, 235, 235);
 }
 
-.left-container>.user-list>ul>li:hover{
-    background-color: rgb(233,235,235);
+.left-container>.user-list>ul>li:hover {
+    background-color: rgb(233, 235, 235);
 }
 
-.left-user-list >.user-list-avatars > img {
+.left-user-list>.user-list-avatars>img {
     height: 60px;
     width: 60px;
     border-radius: 50%;
+}
+
+#chat-area {
+    height: calc(100% - 160px);
+    /* max-height: calc(100% - 160px); */
+    /* min-height: 300px; */
+    overflow-y: scroll;
+    background: url(img/mine.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+.emoticons i,
+.microphone i {
+    color: rgb(107, 115, 118)
 }
