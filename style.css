@@ -1,12 +1,12 @@
 header {
     height: 150px;
-    background-color: rgb(0,150,136);
+    background-color: rgb(0, 150, 136);
 }
 
 main {
     height: calc(100vh - 150px);
-    background-color: rgb(217,219,213);
-    position:relative;
+    background-color: rgb(217, 219, 213);
+    position: relative;
 }
 
 #app {
@@ -15,5 +15,92 @@ main {
     bottom: 30px;
     left: 50px;
     right: 50px;
+    background-color: rgb(234, 234, 234);
+    min-width: 992px;
+}
+
+.left-container {
+    width: 35%;
+    height: 100%;
     background-color: white;
+    border-right: 1px solid rgb(177, 177, 177);
+}
+
+.user-profile {
+    height: 80px;
+    line-height: 80px;
+    background-color: rgb(234, 234, 234);
+}
+
+.user-profile-left {
+    height: 100%;
+}
+
+.user-profile-img {
+    height: 100%;
+    border-radius: 50%;
+}
+
+.user-profile-img img {
+    height: 80%;
+    border-radius: 50%;
+}
+
+.user-profile-right i {
+    margin-right: 10px;
+    font-size: 20px;
+    color: rgb(177, 177, 177);
+}
+
+.notifications {
+    height: 100px;
+    padding-top: 20px;
+    /* line-height: 100px; */
+    background-color: rgb(142, 218, 252);
+}
+
+.notification-bell {
+    height: 60px;
+    line-height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.notification-bell>i {
+    font-size: 20px;
+    color: rgb(142, 218, 252);
+}
+
+.search-bar {
+    height: 60px;
+    padding: 10px 10px;
+    line-height: 60px;
+    background-color: rgb(250, 250, 250);
+}
+
+.fa-magnifying-glass,
+#last-message,
+#last-message-time {
+    color: rgb(177, 177, 177);
+}
+
+.left-container>.user-list {
+    max-height: calc(100% - 240px);
+    overflow-y: scroll;
+}
+
+.left-container>.user-list>ul>li {
+    list-style-type: none;
+    border: 1px solid rgb(233,235,235);
+}
+
+.left-container>.user-list>ul>li:hover{
+    background-color: rgb(233,235,235);
+}
+
+.left-user-list >.user-list-avatars > img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
 }
