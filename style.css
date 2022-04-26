@@ -1,0 +1,19 @@
+header {
+    height: 150px;
+    background-color: rgb(0,150,136);
+}
+
+main {
+    height: calc(100vh - 150px);
+    background-color: rgb(217,219,213);
+    position:relative;
+}
+
+#app {
+    position: absolute;
+    top: -120px;
+    bottom: 30px;
+    left: 50px;
+    right: 50px;
+    background-color: white;
+}
