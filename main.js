@@ -174,11 +174,41 @@ const app = new Vue({
     ],
     activeIndex: 0,
     newMessage: "",
+    filtro: "",
+    contattiFiltrati: [],
   },
 
   methods: {
     changeOnClick(index) {
       this.activeIndex = index;
     },
+    aggiungi(activeIndex) {
+      const nuovoMessaggio = {
+        date: "",
+        message: this.newMessage,
+        status: "sent",
+      };
+      // console.log(this.contacts[activeIndex].messages)
+      // console.log(nuovoMessaggio);
+      this.contacts[activeIndex].messages.push(nuovoMessaggio);
+      // console.log(this.contacts[activeIndex])
+      this.newMessage = "";
+      setTimeout(() => {
+        const messaggioRisposta = {
+          date: "",
+          message: "ok",
+          status: "received",
+        };
+        this.contacts[activeIndex].messages.push(messaggioRisposta);
+      }, 3000);
+    },
+    // filtra(){
+    //     this.contattiFiltrati = this.contacts.filter((item)=>{
+    //         return item.name.includes(this.filtro);
+    //     })
+    // },
+    // mounted(){
+    //     this.filtra();
+    // }
   },
 });

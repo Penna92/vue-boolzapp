@@ -138,8 +138,10 @@ main {
 .chat-messages {
     margin-top: 20px;
     width: fit-content;
-    height: 50px;
-    border-radius: 20px;
+    max-width: 400px;
+    /* height: 50px; */
+    min-height: 50px;
+    border-radius: 10px;
     /* line-height: 50px; */
     /* background-color: white; */
 }
@@ -151,5 +153,10 @@ main {
 
 .sent {
     background-color: rgb(213, 249, 186);
+    align-self: flex-end;
+}
+
+.message-time {
+    font-size: 12px;
     align-self: flex-end;
 }

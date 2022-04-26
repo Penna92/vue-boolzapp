@@ -73,6 +73,8 @@
                 placeholder="Cerca o inizia una nuova chat"
                 aria-label="Find contact"
                 aria-describedby="basic-addon1"
+                v-model="filtro"
+                @keyup="filtra()"
               />
             </div>
           </div>
@@ -81,7 +83,7 @@
               <li
                 :class="{'bg-grey'  : users.visible === false}"
                 class="p-2 d-flex gap-2 justify-content-between"
-                v-for="(users, index) in contacts"
+                v-for="(users, index) in contacts" 
                 :key="index"
                 @click="changeOnClick(index)"
               >
@@ -134,7 +136,10 @@
               class="chat-messages d-flex flex-column justify-content-center px-3 received"
               v-for="(item, index) in contacts[activeIndex].messages"
             >
-              {{contacts[activeIndex].messages[index].message}}
+              <span>{{contacts[activeIndex].messages[index].message}}</span>
+              <span class="message-time"
+                >{{contacts[activeIndex].messages[index].date.slice(-8)}}</span
+              >
             </div>
           </div>
           <div id="write-message" class="d-flex justify-content-around px-3">
@@ -149,11 +154,13 @@
                 aria-label="Scrivi un messaggio"
                 aria-describedby="button-addon2"
                 v-model="newMessage"
+                @keyup.enter="aggiungi(activeIndex)"
               />
               <button
                 class="btn btn-outline-secondary"
                 type="button"
                 id="button-addon2"
+                @click="aggiungi(activeIndex)"
               >
                 <i class="fa-solid fa-paper-plane"></i>
               </button>
