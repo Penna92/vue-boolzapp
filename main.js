@@ -172,7 +172,13 @@ const app = new Vue({
         ],
       },
     ],
+    activeIndex: 0,
+    newMessage: "",
   },
 
-  methods: {},
+  methods: {
+    changeOnClick(index) {
+      this.activeIndex = index;
+    },
+  },
 });

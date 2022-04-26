@@ -127,9 +127,29 @@ main {
     overflow-y: scroll;
     background: url(img/mine.jpg) center center no-repeat;
     background-size: cover;
+    position: relative;
 }
 
 .emoticons i,
 .microphone i {
     color: rgb(107, 115, 118)
+}
+
+.chat-messages {
+    margin-top: 20px;
+    width: fit-content;
+    height: 50px;
+    border-radius: 20px;
+    /* line-height: 50px; */
+    /* background-color: white; */
+}
+
+.received {
+    background-color: white;
+    align-self: flex-start;
+}
+
+.sent {
+    background-color: rgb(213, 249, 186);
+    align-self: flex-end;
 }
