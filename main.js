@@ -176,12 +176,13 @@ const app = new Vue({
     activeMessageIndex: "",
     newMessage: "",
     filtro: "",
-    deletedMessage: "false",
-    deletedMessageIndex: "",
+    dropDownMenu: false,
+    isWriting: false,
   },
 
   methods: {
     changeOnClick(id) {
+      this.dropDownMenu = false;
       this.activeMessageIndex = "";
       // console.log(id);
       const index = this.contacts.findIndex((contact) => {
@@ -190,7 +191,16 @@ const app = new Vue({
       this.activeIndex = index;
     },
     aggiungi(activeIndex) {
+      this.dropDownMenu = false;
+      let soloSpazi = false;
       if (this.newMessage === "") return;
+      for (let i = 0; i < this.newMessage.length; i++) {
+        // console.log(this.newMessage[i]);
+        if (this.newMessage[i] !== " ") {
+          soloSpazi = true;
+        }
+      }
+      if (soloSpazi == false) return;
       const nuovoMessaggio = {
         date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
         message: this.newMessage,
@@ -201,14 +211,20 @@ const app = new Vue({
       this.contacts[activeIndex].messages.push(nuovoMessaggio);
       // console.log(this.contacts[activeIndex])
       this.newMessage = "";
+      this.isWriting = true;
       setTimeout(() => {
+        this.isWriting = false;
         const messaggioRisposta = {
           date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
           message: "ok",
           status: "received",
         };
         this.contacts[activeIndex].messages.push(messaggioRisposta);
-      }, 3000);
+        this.isWriting = null;
+        setTimeout(() => {
+          this.isWriting = false;
+        }, 2000);
+      }, 2000);
     },
     showMessageInfo(index) {
       console.log(index);
@@ -225,7 +241,24 @@ const app = new Vue({
       this.contacts[this.activeIndex].messages.splice(index, 1);
       console.log(this.contacts[this.activeIndex].messages);
     },
+    showDropDownMenu() {
+      if (this.dropDownMenu == false) {
+        this.dropDownMenu = true;
+      } else if (this.dropDownMenu == true) {
+        this.dropDownMenu = false;
+      }
+    },
+    removeObject() {
+      this.dropDownMenu = false;
+      console.log(this.activeIndex, this.contacts);
+      this.contacts.splice(this.activeIndex, 1);
+    },
   },
+  //   mounted(){
+  //     this.contacts.splice(0, this.contacts.length);
+  //     const myTimeout = setTimeout(changeOnClick(id), 2000);
+  //     return;
+  //   },
   computed: {
     filteredContacts() {
       return this.contacts.filter((item) => {

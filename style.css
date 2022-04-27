@@ -66,6 +66,10 @@ main {
     color: rgb(177, 177, 177);
 }
 
+.contact-profile-right {
+    position: relative;
+}
+
 .notifications {
     height: 100px;
     padding-top: 20px;
@@ -100,8 +104,8 @@ main {
     color: rgb(177, 177, 177);
 }
 
-#last-message-time{
-    vertical-align:text-bottom;
+#last-message-time {
+    vertical-align: text-bottom;
 }
 
 .left-container>.user-list {
@@ -116,6 +120,10 @@ main {
 
 .left-container>.user-list>ul>li:hover {
     background-color: rgb(233, 235, 235);
+}
+
+.bg-grey {
+    background-color: grey;
 }
 
 .left-user-list>.user-list-avatars>img {
@@ -177,7 +185,7 @@ main {
     top: 20px;
     background-color: white;
     z-index: 999;
-    box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.2);
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
     /* display: none; */
 }
 
@@ -190,6 +198,7 @@ main {
     display: block;
     border: 1px solid rgb(233, 235, 235);
     cursor: pointer;
+    text-align: center;
 }
 
 .chat-icon {
@@ -205,5 +214,22 @@ main {
 }
 
 i {
+    cursor: pointer;
+}
+
+#drop-down-menu {
+    height: 150px;
+    width: 150px;
+    background-color: white;
+    z-index: 99999;
+    position: absolute;
+    top: 80px;
+    right: 0px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+#drop-down-menu span {
+    height: 75px;
     cursor: pointer;
 }
