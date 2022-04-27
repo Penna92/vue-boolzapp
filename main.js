@@ -5,7 +5,7 @@ const app = new Vue({
       {
         id: 1,
         name: "Michele",
-        avatar: "img/avatar_1.jpg",
+        avatar: "_1",
         visible: true,
         messages: [
           {
@@ -28,7 +28,7 @@ const app = new Vue({
       {
         id: 2,
         name: "Fabio",
-        avatar: "img/avatar_2.jpg",
+        avatar: "_2",
         visible: true,
         messages: [
           {
@@ -51,7 +51,7 @@ const app = new Vue({
       {
         id: 3,
         name: "Samuele",
-        avatar: "img/avatar_3.jpg",
+        avatar: "_3",
         visible: true,
         messages: [
           {
@@ -74,7 +74,7 @@ const app = new Vue({
       {
         id: 4,
         name: "Alessandro B.",
-        avatar: "img/avatar_4.jpg",
+        avatar: "_4",
         visible: true,
         messages: [
           {
@@ -92,7 +92,7 @@ const app = new Vue({
       {
         id: 5,
         name: "Alessandro L.",
-        avatar: "img/avatar_5.jpg",
+        avatar: "_5",
         visible: true,
         messages: [
           {
@@ -110,7 +110,7 @@ const app = new Vue({
       {
         id: 6,
         name: "Claudia",
-        avatar: "img/avatar_6.jpg",
+        avatar: "_6",
         visible: true,
         messages: [
           {
@@ -133,7 +133,7 @@ const app = new Vue({
       {
         id: 7,
         name: "Federico",
-        avatar: "img/avatar_7.jpg",
+        avatar: "_7",
         visible: true,
         messages: [
           {
@@ -151,7 +151,7 @@ const app = new Vue({
       {
         id: 8,
         name: "Davide",
-        avatar: "img/avatar_8.jpg",
+        avatar: "_8",
         visible: true,
         messages: [
           {
@@ -179,12 +179,17 @@ const app = new Vue({
   },
 
   methods: {
-    changeOnClick(index) {
+    changeOnClick(id) {
+      // console.log(id);
+      const index = this.contacts.findIndex((contact) => {
+        return contact.id === id;
+      });
       this.activeIndex = index;
     },
     aggiungi(activeIndex) {
+      if (this.newMessage === "") return;
       const nuovoMessaggio = {
-        date: "",
+        date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
         message: this.newMessage,
         status: "sent",
       };
@@ -195,20 +200,26 @@ const app = new Vue({
       this.newMessage = "";
       setTimeout(() => {
         const messaggioRisposta = {
-          date: "",
+          date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
           message: "ok",
           status: "received",
         };
         this.contacts[activeIndex].messages.push(messaggioRisposta);
       }, 3000);
     },
-    // filtra(){
-    //     this.contattiFiltrati = this.contacts.filter((item)=>{
-    //         return item.name.includes(this.filtro);
-    //     })
-    // },
-    // mounted(){
-    //     this.filtra();
-    // }
+    mounted() {
+      this.filtra();
+    },
+  },
+  computed: {
+    filteredContacts() {
+      return this.contacts.filter((item) => {
+        if (item.name.toLowerCase().includes(this.filtro.toLowerCase())) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    },
   },
 });

@@ -22,6 +22,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <link rel="stylesheet" href="style.css" />
     <title>Vue Boolzapp</title>
@@ -74,7 +75,6 @@
                 aria-label="Find contact"
                 aria-describedby="basic-addon1"
                 v-model="filtro"
-                @keyup="filtra()"
               />
             </div>
           </div>
@@ -83,21 +83,30 @@
               <li
                 :class="{'bg-grey'  : users.visible === false}"
                 class="p-2 d-flex gap-2 justify-content-between"
-                v-for="(users, index) in contacts" 
-                :key="index"
-                @click="changeOnClick(index)"
+                v-for="(users, index) in filteredContacts"
+                :key="users.id"
+                @click="changeOnClick(users.id)"
               >
                 <div class="left-user-list d-flex gap-2">
                   <div class="user-list-avatars">
-                    <img :src="users.avatar" :alt="users.name" />
+                    <img
+                      :src=" 'img/avatar'+users.avatar+'.jpg' "
+                      :alt=" 'Avatar ' + users.name"
+                    />
                   </div>
                   <div class="user-text d-inline">
                     <span class="fs-5">{{users.name}} <br /> </span>
-                    <span id="last-message">Ultimo messaggio inviato</span>
+                    <span id="last-message"
+                      >{{contacts[index].messages[contacts[index].messages.length
+                      - 1].message}}</span
+                    >
                   </div>
                 </div>
                 <div class="right-user-list">
-                  <span id="last-message-time">12:00</span>
+                  <span id="last-message-time"
+                    >{{contacts[index].messages[contacts[index].messages.length
+                    - 1].date.slice(-8)}}</span
+                  >
                 </div>
               </li>
             </ul>
@@ -108,7 +117,7 @@
             <div class="contact-profile-left d-flex justify-content-center">
               <div class="contact-profile-img">
                 <img
-                  :src="contacts[activeIndex].avatar"
+                  :src="'img/avatar' + contacts[activeIndex].avatar + '.jpg'"
                   class="img-fluid"
                   :alt="contacts[activeIndex].name"
                 />
@@ -119,8 +128,10 @@
                 <span class="mx-3 fs-4"
                   >{{contacts[activeIndex].name}}<br
                 /></span>
-                <span id="last-access" class="mx-3"
-                  >Ultimo accesso oggi alle 12:00</span
+                <span id="last-access" class="mx-3 my-1"
+                  >Ultimo accesso alle
+                  {{contacts[activeIndex].messages[contacts[activeIndex].messages.length
+                  - 1].date.slice(-8)}}</span
                 >
               </div>
             </div>

@@ -100,9 +100,13 @@ main {
     color: rgb(177, 177, 177);
 }
 
+#last-message-time{
+    vertical-align:text-bottom;
+}
+
 .left-container>.user-list {
     max-height: calc(100% - 240px);
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .left-container>.user-list>ul>li {
@@ -124,7 +128,7 @@ main {
     height: calc(100% - 160px);
     /* max-height: calc(100% - 160px); */
     /* min-height: 300px; */
-    overflow-y: scroll;
+    overflow-y: auto;
     background: url(img/mine.jpg) center center no-repeat;
     background-size: cover;
     position: relative;
