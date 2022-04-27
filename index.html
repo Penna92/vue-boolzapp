@@ -147,10 +147,19 @@
               class="chat-messages d-flex flex-column justify-content-center px-3 received"
               v-for="(item, index) in contacts[activeIndex].messages"
             >
-              <span>{{contacts[activeIndex].messages[index].message}}</span>
+              <span>
+                  {{contacts[activeIndex].messages[index].message}}
+              </span>
               <span class="message-time"
                 >{{contacts[activeIndex].messages[index].date.slice(-8)}}</span
               >
+              <div class="chat-icon" @click="showMenu = !showMenu">
+                <i class="fa-solid fa-angle-down"></i>
+              </div>
+              <div class="message-info" :class="{'show-message-info' : showMenu === !this.showMenu}">
+                <span>Message info</span>
+                <span>Delete message</span>
+              </div>
             </div>
           </div>
           <div id="write-message" class="d-flex justify-content-around px-3">

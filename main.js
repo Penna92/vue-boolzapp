@@ -176,10 +176,12 @@ const app = new Vue({
     newMessage: "",
     filtro: "",
     contattiFiltrati: [],
+    showMenu: false,
   },
 
   methods: {
     changeOnClick(id) {
+        console.log(!this.showMenu)
       // console.log(id);
       const index = this.contacts.findIndex((contact) => {
         return contact.id === id;

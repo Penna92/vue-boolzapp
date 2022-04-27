@@ -140,6 +140,7 @@ main {
 }
 
 .chat-messages {
+    position: relative;
     margin-top: 20px;
     width: fit-content;
     min-width: 300px;
@@ -164,4 +165,34 @@ main {
 .message-time {
     font-size: 12px;
     align-self: flex-end;
+}
+
+.message-info {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    background-color: white;
+    z-index: 999;
+    display: none;
+}
+
+.show-message-info{
+    display: block;
+}
+
+.message-info span {
+    padding: 5px;
+    display: block;
+    border: 1px solid rgb(233, 235, 235);
+}
+
+.chat-icon {
+    position: absolute;
+    top: 2px;
+    right: 15px;
+    display: none;
+}
+
+.chat-messages:hover .chat-icon {
+    display: block;
 }
