@@ -153,10 +153,10 @@
               <span class="message-time"
                 >{{contacts[activeIndex].messages[index].date.slice(-8)}}</span
               >
-              <div class="chat-icon" @click="showMenu = !showMenu">
+              <div class="chat-icon" @click="showMessageInfo(index)">
                 <i class="fa-solid fa-angle-down"></i>
               </div>
-              <div class="message-info" :class="{'show-message-info' : showMenu === !this.showMenu}">
+              <div v-if="activeMessageIndex === index" class="message-info">
                 <span>Message info</span>
                 <span>Delete message</span>
               </div>

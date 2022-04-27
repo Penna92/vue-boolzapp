@@ -173,17 +173,18 @@ main {
     top: 20px;
     background-color: white;
     z-index: 999;
-    display: none;
+    /* display: none; */
 }
 
-.show-message-info{
+/* .show-message-info{
     display: block;
-}
+} */
 
 .message-info span {
     padding: 5px;
     display: block;
     border: 1px solid rgb(233, 235, 235);
+    cursor: pointer;
 }
 
 .chat-icon {
@@ -191,6 +192,7 @@ main {
     top: 2px;
     right: 15px;
     display: none;
+    cursor: pointer;
 }
 
 .chat-messages:hover .chat-icon {

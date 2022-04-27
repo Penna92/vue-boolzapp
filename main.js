@@ -173,9 +173,9 @@ const app = new Vue({
       },
     ],
     activeIndex: 0,
+    activeMessageIndex: "",
     newMessage: "",
     filtro: "",
-    contattiFiltrati: [],
     showMenu: false,
   },
 
@@ -208,6 +208,17 @@ const app = new Vue({
         };
         this.contacts[activeIndex].messages.push(messaggioRisposta);
       }, 3000);
+    },
+    showMessageInfo(index){
+        console.log(index);
+        if(this.activeMessageIndex !== index){
+            this.activeMessageIndex = index;
+        } else if(this.activeMessageIndex === index) {
+            this.activeMessageIndex = "";
+        }
+        
+        console.log(this.activeMessageIndex);
+        // this.activeMessageIndex = "";
     },
     mounted() {
       this.filtra();
