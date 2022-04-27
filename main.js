@@ -176,12 +176,13 @@ const app = new Vue({
     activeMessageIndex: "",
     newMessage: "",
     filtro: "",
-    showMenu: false,
+    deletedMessage: "false",
+    deletedMessageIndex: "",
   },
 
   methods: {
     changeOnClick(id) {
-        console.log(!this.showMenu)
+      this.activeMessageIndex = "";
       // console.log(id);
       const index = this.contacts.findIndex((contact) => {
         return contact.id === id;
@@ -209,19 +210,20 @@ const app = new Vue({
         this.contacts[activeIndex].messages.push(messaggioRisposta);
       }, 3000);
     },
-    showMessageInfo(index){
-        console.log(index);
-        if(this.activeMessageIndex !== index){
-            this.activeMessageIndex = index;
-        } else if(this.activeMessageIndex === index) {
-            this.activeMessageIndex = "";
-        }
-        
-        console.log(this.activeMessageIndex);
-        // this.activeMessageIndex = "";
+    showMessageInfo(index) {
+      console.log(index);
+      if (this.activeMessageIndex !== index) {
+        this.activeMessageIndex = index;
+      } else if (this.activeMessageIndex === index) {
+        this.activeMessageIndex = "";
+      }
+      console.log(this.activeMessageIndex);
+      // this.activeMessageIndex = "";
     },
-    mounted() {
-      this.filtra();
+    deleteMessage(index) {
+      this.activeMessageIndex = "";
+      this.contacts[this.activeIndex].messages.splice(index, 1);
+      console.log(this.contacts[this.activeIndex].messages);
     },
   },
   computed: {

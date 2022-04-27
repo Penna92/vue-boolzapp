@@ -167,12 +167,17 @@ main {
     align-self: flex-end;
 }
 
+.message-wrapper {
+    position: relative;
+}
+
 .message-info {
     position: absolute;
     right: 10px;
     top: 20px;
     background-color: white;
     z-index: 999;
+    box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.2);
     /* display: none; */
 }
 
@@ -189,7 +194,7 @@ main {
 
 .chat-icon {
     position: absolute;
-    top: 2px;
+    top: -5px;
     right: 15px;
     display: none;
     cursor: pointer;
@@ -197,4 +202,8 @@ main {
 
 .chat-messages:hover .chat-icon {
     display: block;
+}
+
+i {
+    cursor: pointer;
 }
