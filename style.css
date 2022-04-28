@@ -136,7 +136,7 @@ main {
 }
 
 .bg-grey {
-    background-color: grey;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .left-user-list>.user-list-avatars>img {
@@ -248,6 +248,25 @@ i {
 
 .dark-mode {
     filter: invert(1);
+}
+
+.emoticons {
+    position: relative;
+}
+
+.icon-cont {
+    line-height: 2rem;
+    max-height: 400px;
+    overflow: auto;
+    position: absolute;
+    bottom: 80px;
+    left: -16px;
+    width: 300px;
+    height: 300px;
+    padding: 5px;
+    background-color: rgb(234, 234, 234);
+    /* background-color: transparent; */
+    font-size: 1rem;
 }
 
 /* MEDIA QUERIES */

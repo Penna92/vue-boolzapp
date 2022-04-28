@@ -185,9 +185,19 @@ const app = new Vue({
       block: "end",
       inline: "nearest",
     },
+    emoji: false,
   },
 
   methods: {
+    // VISUALIZZARE LISTA DI EMOJI
+    showEmoji() {
+      if (this.emoji == false) {
+        this.emoji = true;
+      } else if (this.emoji == true) {
+        this.emoji = false;
+      }
+    },
+
     // VISUALIZZARE LA CHAT CORRISPONDENTE AL CONTATTO
     changeOnClick(id) {
       this.dropDownMenu = false;

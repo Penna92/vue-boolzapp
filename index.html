@@ -155,7 +155,25 @@
                 </div>
                 <div id="write-message" class="d-flex justify-content-around px-3">
                     <div class="emoticons">
-                        <i class="fa-regular fa-face-smile"></i>
+                        <i @click="showEmoji" class="fa-regular fa-face-smile"></i>
+                        <div v-if="emoji == true" class="icon-cont">
+                            😀 😃 😄 😁 😆 😅 😂
+                            🤣 😊 😇 🙂 🙃 😉
+                            😌 😍 🥰 😘 😗 😙 😚
+                            😋 😛 😝 😜 🤪 🤨 🧐
+                            🤓 😎 🤩 🥳 😏 😒 😞
+                            😔 😟 😕 🙁 ☹️ 😣 😖
+                            😫 😩 🥺 😢 😭 😤 😠
+                            😡 🤬 🤯 😳 🥵 🥶 😱
+                            😨 😰 😥 😓 🤗 🤔 🤭
+                            🤫 🤥 😶 😐 😑 😬 🙄
+                            😯 😦 😧 😮 😲 😴 🤤
+                            😪 😵 🤐 🥴 🤢 🤮 🤧
+                            😷 🤒 🤕 🤑 🤠 😈 👿
+                            👹 👺 🤡 💩 👻 💀 ☠️
+                            👽 👾 🤖 🎃 😺 😸 😹
+                            😻 😼 😽 🙀 😿 😾
+                        </div>
                     </div>
                     <div class="input-group p-3">
                         <input type="text" class="form-control" placeholder="Scrivi un messaggio"
