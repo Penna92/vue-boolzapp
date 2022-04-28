@@ -180,6 +180,11 @@ const app = new Vue({
     isWriting: false,
     darkMode: false,
     newContact: "",
+    scrollIntoViewOptions: {
+      behavior: "smooth",
+      block: "end",
+      inline: "nearest",
+    },
   },
 
   methods: {
@@ -213,15 +218,24 @@ const app = new Vue({
       this.newMessage = "";
       this.isWriting = true;
       setTimeout(() => {
+        this.scrollToElement();
+      }, 100);
+      setTimeout(() => {
         this.isWriting = false;
         const randomReplies = [
           "Daje!",
           "Anvedi!",
-          "Aspetta un attimo che ho da fare",
+          "Aspetta un attimo che ho da fare...",
           "Ti richiamo fra poco",
           "Perchè mi dici questo?",
           "Ma sei sicuro?",
           "Non ci posso credere!",
+          "Scusa!",
+          "Weeeee grandissimo!!",
+          "Sono felice di sentirti",
+          "Sto guidando!",
+          "Ho la batteria quasi scarica",
+          "Mi stanno chiamando su Zoom, ti devo lasciare",
         ];
         const messaggioRisposta = {
           date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
@@ -231,6 +245,9 @@ const app = new Vue({
         };
         this.contacts[activeIndex].messages.push(messaggioRisposta);
         this.isWriting = null;
+        setTimeout(() => {
+          this.scrollToElement();
+        }, 100);
         setTimeout(() => {
           this.isWriting = false;
         }, 2000);
@@ -283,7 +300,6 @@ const app = new Vue({
 
     // AGGIUNGI UN NUOVO CONTATTO ALLA LISTA CONTATTI
     addNewContact() {
-      console.log(this.newContact);
       const newContactObj = {
         id: 9,
         name: this.newContact,
@@ -303,10 +319,19 @@ const app = new Vue({
         this.darkMode = false;
       }
     },
-  },
-  mounted() {},
-  computed: {
 
+    // SCROLL ALL'ULTIMO ELEMENTO
+    scrollToElement() {
+      const el = document.getElementById("chat-area").lastChild;
+      el.scrollIntoView(this.scrollIntoViewOptions);
+    },
+  },
+
+  // MOUNTED
+  mounted() {},
+
+  // COMPUTED
+  computed: {
     // FILTRA CONTATTI IN BASE AL LORO NOME
     filteredContacts() {
       return this.contacts.filter((item) => {
