@@ -22,7 +22,7 @@
 <body>
     <header></header>
     <main>
-        <div id="app" class="container d-flex px-0">
+        <div id="app" class="container d-flex px-0" :class="{'dark-mode' : darkMode == true}">
             <div class="left-container">
                 <div class="user-profile d-flex justify-content-between px-2">
                     <div class="user-profile-left d-flex">
@@ -34,7 +34,10 @@
                         </div>
                     </div>
                     <div class="user-profile-right">
-                        <i class="fa-solid fa-circle-notch"></i>
+                        <i v-if="darkMode == true" @click="setDarkMode" class="fa-solid fa-circle-notch">
+                            Light </i>
+                        <i v-if="darkMode == false" @click="setDarkMode" class="fa-solid fa-circle-notch">
+                            Dark </i>
                         <i class="fa-solid fa-message"></i>
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
@@ -47,9 +50,7 @@
                         <span class="d-block fw-bold">
                             Ricevi notifiche di nuovi messaggi
                         </span>
-                        <a class="text-secondary" href="#">
-                            Attiva notifiche desktop
-                        </a>
+                        <a class="text-secondary" href="#"> Attiva notifiche desktop </a>
                     </div>
                 </div>
                 <div class="search-bar">
@@ -71,14 +72,15 @@
                                 <div class="user-text d-inline">
                                     <span class="fs-5">{{users.name}} <br /> </span>
                                     <span id="last-message">
-                                        {{contacts[index]?.messages[contacts[index]?.messages.length
+                                        {{filteredContacts[index]?.messages[filteredContacts[index]?.messages.length
                                         - 1]?.message}}
                                     </span>
                                 </div>
                             </div>
                             <div class="right-user-list">
                                 <span id="last-message-time">
-                                    {{contacts[index]?.messages[contacts[index]?.messages.length - 1]?.date.slice(-8)}}
+                                    {{filteredContacts[index]?.messages[filteredContacts[index]?.messages.length
+                                    - 1]?.date.slice(-8)}}
                                 </span>
                             </div>
                         </li>
@@ -98,8 +100,8 @@
                             </span>
                             <span v-if="contacts.length > 0 && isWriting == false" id="last-access" class="mx-3 my-1">
                                 Ultimo accesso alle
-                                {{contacts[activeIndex]?.messages[contacts[activeIndex]?.messages.length -
-                                1]?.date.slice(-8)}}
+                                {{contacts[activeIndex]?.messages[contacts[activeIndex]?.messages.length
+                                - 1]?.date.slice(-8)}}
                             </span>
                             <span v-if="contacts.length > 0 && isWriting == true" id="last-access" class="mx-3 my-1">
                                 Sta scrivendo...
@@ -137,9 +139,7 @@
                             </div>
                             <div v-if="activeMessageIndex === index" class="message-info">
                                 <span>Message info</span>
-                                <span @click="deleteMessage(index)">
-                                    Delete message
-                                </span>
+                                <span @click="deleteMessage(index)"> Delete message </span>
                             </div>
                         </div>
                     </div>

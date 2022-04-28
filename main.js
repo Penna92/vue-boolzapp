@@ -178,6 +178,7 @@ const app = new Vue({
     filtro: "",
     dropDownMenu: false,
     isWriting: false,
+    darkMode: false,
   },
 
   methods: {
@@ -252,6 +253,13 @@ const app = new Vue({
       this.dropDownMenu = false;
       console.log(this.activeIndex, this.contacts);
       this.contacts.splice(this.activeIndex, 1);
+    },
+    setDarkMode() {
+      if (this.darkMode == false) {
+        this.darkMode = true;
+      } else if (this.darkMode == true) {
+        this.darkMode = false;
+      }
     },
   },
   //   mounted(){
