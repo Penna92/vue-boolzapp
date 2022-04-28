@@ -179,24 +179,26 @@ const app = new Vue({
     dropDownMenu: false,
     isWriting: false,
     darkMode: false,
+    newContact: "",
   },
 
   methods: {
+    // VISUALIZZARE LA CHAT CORRISPONDENTE AL CONTATTO
     changeOnClick(id) {
       this.dropDownMenu = false;
       this.activeMessageIndex = "";
-      // console.log(id);
       const index = this.contacts.findIndex((contact) => {
         return contact.id === id;
       });
       this.activeIndex = index;
     },
-    aggiungi(activeIndex) {
+
+    // INVIARE MESSAGGI E RICEVERE UNA RISPOSTA RANDOMICA DOPO QUALCHE SECONDO (CON AGGIORNAMENTI DI STATO)
+    sendMessage(activeIndex) {
       this.dropDownMenu = false;
       let soloSpazi = false;
       if (this.newMessage === "") return;
       for (let i = 0; i < this.newMessage.length; i++) {
-        // console.log(this.newMessage[i]);
         if (this.newMessage[i] !== " ") {
           soloSpazi = true;
         }
@@ -207,17 +209,24 @@ const app = new Vue({
         message: this.newMessage,
         status: "sent",
       };
-      // console.log(this.contacts[activeIndex].messages)
-      // console.log(nuovoMessaggio);
       this.contacts[activeIndex].messages.push(nuovoMessaggio);
-      // console.log(this.contacts[activeIndex])
       this.newMessage = "";
       this.isWriting = true;
       setTimeout(() => {
         this.isWriting = false;
+        const randomReplies = [
+          "Daje!",
+          "Anvedi!",
+          "Aspetta un attimo che ho da fare",
+          "Ti richiamo fra poco",
+          "Perchè mi dici questo?",
+          "Ma sei sicuro?",
+          "Non ci posso credere!",
+        ];
         const messaggioRisposta = {
           date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
-          message: "ok",
+          message:
+            randomReplies[Math.floor(Math.random() * randomReplies.length)],
           status: "received",
         };
         this.contacts[activeIndex].messages.push(messaggioRisposta);
@@ -225,23 +234,38 @@ const app = new Vue({
         setTimeout(() => {
           this.isWriting = false;
         }, 2000);
-      }, 2000);
+      }, 3000);
     },
+
+    // VISUALIZZARE MENU PER CANCELLARE UN SINGOLO MESSAGGIO
     showMessageInfo(index) {
-      console.log(index);
       if (this.activeMessageIndex !== index) {
         this.activeMessageIndex = index;
       } else if (this.activeMessageIndex === index) {
         this.activeMessageIndex = "";
       }
-      console.log(this.activeMessageIndex);
-      // this.activeMessageIndex = "";
     },
+
+    // CANCELLARE UN SINGOLO MESSAGGIO
     deleteMessage(index) {
       this.activeMessageIndex = "";
-      this.contacts[this.activeIndex].messages.splice(index, 1);
-      console.log(this.contacts[this.activeIndex].messages);
+      if (this.contacts[this.activeIndex].messages.length > 0) {
+        this.contacts[this.activeIndex].messages.splice(index, 1);
+        console.log(this.contacts[this.activeIndex].messages);
+      }
     },
+
+    // CANCELLARE TUTTI I MESSAGGI DELLA CHAT
+    deleteAllMessages(activeIndex) {
+      this.contacts[activeIndex].messages = [];
+      if (this.dropDownMenu == false) {
+        this.dropDownMenu = true;
+      } else if (this.dropDownMenu == true) {
+        this.dropDownMenu = false;
+      }
+    },
+
+    // APRIRE DROPDOWN MENU DAI 3 PUNTINI
     showDropDownMenu() {
       if (this.dropDownMenu == false) {
         this.dropDownMenu = true;
@@ -249,11 +273,29 @@ const app = new Vue({
         this.dropDownMenu = false;
       }
     },
+
+    // RIMUOVI INTERA CHAT DALL' ARRAY DI OGGETTI
     removeObject() {
       this.dropDownMenu = false;
       console.log(this.activeIndex, this.contacts);
       this.contacts.splice(this.activeIndex, 1);
     },
+
+    // AGGIUNGI UN NUOVO CONTATTO ALLA LISTA CONTATTI
+    addNewContact() {
+      console.log(this.newContact);
+      const newContactObj = {
+        id: 9,
+        name: this.newContact,
+        avatar: "_new_contact",
+        visible: true,
+        messages: [],
+      };
+      this.contacts.unshift(newContactObj);
+      this.newContact = "";
+    },
+
+    // MODALITA' LIGHT/DARK
     setDarkMode() {
       if (this.darkMode == false) {
         this.darkMode = true;
@@ -262,12 +304,10 @@ const app = new Vue({
       }
     },
   },
-  //   mounted(){
-  //     this.contacts.splice(0, this.contacts.length);
-  //     const myTimeout = setTimeout(changeOnClick(id), 2000);
-  //     return;
-  //   },
+  mounted() {},
   computed: {
+
+    // FILTRA CONTATTI IN BASE AL LORO NOME
     filteredContacts() {
       return this.contacts.filter((item) => {
         if (item.name.toLowerCase().includes(this.filtro.toLowerCase())) {
