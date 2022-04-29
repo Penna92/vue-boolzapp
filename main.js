@@ -188,9 +188,30 @@ const app = new Vue({
     emoji: false,
     splashPage: false,
     welcomePage: false,
+    fontSize: null,
   },
 
   methods: {
+    // CAMBIA DIMENSIONE DEL FONT
+    biggerFont() {
+      if (this.fontSize == false) {
+        this.fontSize = null;
+      } else if (this.fontSize == null) {
+        this.fontSize = true;
+      } else {
+        return;
+      }
+    },
+    smallerFont() {
+      if (this.fontSize == true) {
+        this.fontSize = null;
+      } else if (this.fontSize == null) {
+        this.fontSize = false;
+      } else {
+        return;
+      }
+    },
+
     // VISUALIZZARE LISTA DI EMOJI
     showEmoji() {
       if (this.emoji == false) {
@@ -313,8 +334,16 @@ const app = new Vue({
 
     // AGGIUNGI UN NUOVO CONTATTO ALLA LISTA CONTATTI
     addNewContact() {
+      let soloSpazi = false;
+      if (this.newContact === "") return;
+      for (let i = 0; i < this.newContact.length; i++) {
+        if (this.newContact[i] !== " ") {
+          soloSpazi = true;
+        }
+      }
+      if (soloSpazi == false) return;
       const newContactObj = {
-        id: 9,
+        id: this.contacts.length + 1,
         name: this.newContact,
         avatar: "_new_contact",
         visible: true,

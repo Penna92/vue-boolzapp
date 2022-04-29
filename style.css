@@ -304,6 +304,17 @@ i {
     object-position: center;
 }
 
+.fa-circle-notch span {
+    font-size: 10px;
+}
+
+.smaller-font {
+    font-size: 12px;
+}
+
+.bigger-font {
+    font-size: 24px;
+}
 
 /* MEDIA QUERIES */
 
