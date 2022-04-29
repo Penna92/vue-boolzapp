@@ -44,7 +44,8 @@
                     <div class="user-profile-right">
                         <i @click="smallerFont" class="fa-solid fa-minus"></i>
                         <i @click="biggerFont" class="fa-solid fa-plus"></i>
-                        <i @click="setDarkMode" class="fa-solid fa-circle-half-stroke"></i>
+                        <i v-if="darkMode == false" @click="setDarkMode" class="fa-solid fa-circle-half-stroke"></i>
+                        <i v-if="darkMode == true" @click="setDarkMode" class="fa-regular fa-lightbulb"></i>
                         </i>
                         <i class="fa-solid fa-message"></i>
                         <i class="fa-solid fa-ellipsis-vertical"></i>
