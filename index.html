@@ -163,24 +163,11 @@
                 <div id="write-message" class="d-flex justify-content-around px-3">
                     <div class="emoticons">
                         <i @click="showEmoji" class="fa-regular fa-face-smile"></i>
-                        <div v-if="emoji == true" class="icon-cont">
-                            😀 😃 😄 😁 😆 😅 😂
-                            🤣 😊 😇 🙂 🙃 😉
-                            😌 😍 🥰 😘 😗 😙 😚
-                            😋 😛 😝 😜 🤪 🤨 🧐
-                            🤓 😎 🤩 🥳 😏 😒 😞
-                            😔 😟 😕 🙁 ☹️ 😣 😖
-                            😫 😩 🥺 😢 😭 😤 😠
-                            😡 🤬 🤯 😳 🥵 🥶 😱
-                            😨 😰 😥 😓 🤗 🤔 🤭
-                            🤫 🤥 😶 😐 😑 😬 🙄
-                            😯 😦 😧 😮 😲 😴 🤤
-                            😪 😵 🤐 🥴 🤢 🤮 🤧
-                            😷 🤒 🤕 🤑 🤠 😈 👿
-                            👹 👺 🤡 💩 👻 💀 ☠️
-                            👽 👾 🤖 🎃 😺 😸 😹
-                            😻 😼 😽 🙀 😿 😾
-                        </div>
+                        <ul v-if="emoji == true" class="icon-cont">
+                            <li @click="addEmoji(index)" class="d-inline" v-for="(item, index) in emojis">
+                                {{item}}
+                            </li>
+                        </ul>
                     </div>
                     <div class="input-group p-3">
                         <input type="text" class="form-control" placeholder="Scrivi un messaggio"

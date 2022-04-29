@@ -250,7 +250,7 @@ i {
     max-height: 400px;
     overflow: auto;
     position: absolute;
-    bottom: 80px;
+    bottom: 64px;
     left: -16px;
     width: 300px;
     height: 300px;
@@ -305,6 +305,10 @@ i {
     font-size: 24px;
 }
 
+.icon-cont li {
+    cursor: pointer;
+}
+
 /* ------MEDIA QUERIES------ */
 
 @media screen and (max-width: 1091px) {
@@ -313,7 +317,7 @@ i {
     }
 }
 
-/* @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
 
     .right-container {
         display: none;
@@ -325,4 +329,4 @@ i {
         left: 0;
         width: 100vw;
     }
-} */
+}
