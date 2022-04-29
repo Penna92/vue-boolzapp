@@ -27,11 +27,11 @@
 <body>
     <header></header>
     <main>
-        <div id="app" class="d-flex px-0" :class="{'dark-mode' : darkMode == true}">
+        <div id="app" class="px-0" :class="{'dark-mode' : darkMode == true}">
             <div v-if="splashPage == true" id="splash-image">
                 <img src="img/splash-image.jpg" alt="Splash image">
             </div>
-            <div v-if="splashPage == false" class="left-container">
+            <div v-if="splashPage == false" class="left-container" :class="{'d-none' : showContactList == false}">
                 <div class="user-profile d-flex justify-content-between px-2">
                     <div class="user-profile-left d-flex">
                         <div class="user-profile-img">
@@ -74,7 +74,7 @@
                     <ul class="container-fluid my-0 px-0">
                         <li :class="{'bg-grey' : activeIndex == index && welcomePage == false}"
                             class="p-2 d-flex gap-2 justify-content-between" v-for="(users, index) in filteredContacts"
-                            :key="users.id" @click="changeOnClick(users.id)">
+                            :key="users.id" @click="changeOnClick(users.id); showChatResponsive()">
                             <div class="left-user-list d-flex gap-2">
                                 <div class="user-list-avatars">
                                     <img :src=" 'img/avatar' + users.avatar + '.jpg' " :alt=" 'Avatar ' + users.name" />
@@ -97,13 +97,14 @@
                     </ul>
                 </div>
             </div>
-            <div v-if="splashPage == false" class="right-container">
+            <div v-if="splashPage == false" class="right-container" :class="{'d-block' : showContactList == false}">
                 <div v-if="welcomePage == true" id="welcome-page">
                     <img src="img/welcome-page.jpg" alt="Welcome page">
                 </div>
                 <div class="contact-profile d-flex justify-content-between px-2">
                     <div class="contact-profile-left d-flex justify-content-center">
                         <div class="contact-profile-img">
+                            <i @click="showChatResponsive" class="fa-solid fa-arrow-left"></i>
                             <img v-if="contacts.length > 0" :src="'img/avatar' + contacts[activeIndex]?.avatar + '.jpg'"
                                 class="img-fluid" :alt="contacts[activeIndex]?.name" />
                         </div>
@@ -145,7 +146,7 @@
                     <div :class="{'sent' : contacts[activeIndex]?.messages[index].status === 'sent'}"
                         class="chat-messages d-flex flex-column justify-content-center px-3 received"
                         v-for="(item, index) in contacts[activeIndex]?.messages">
-                        <span>
+                        <span class="word-wrap">
                             {{contacts[activeIndex]?.messages[index]?.message}}
                         </span>
                         <span class="message-time">

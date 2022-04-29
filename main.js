@@ -189,6 +189,7 @@ const app = new Vue({
     splashPage: false,
     welcomePage: false,
     fontSize: null,
+    showContactList: true,
     emojis: [
       "😀",
       "😃",
@@ -304,6 +305,15 @@ const app = new Vue({
   },
 
   methods: {
+    // MOSTRA LA CHAT IN FORMATO MOBILE
+    showChatResponsive() {
+      if (this.showContactList == true) {
+        this.showContactList = false;
+      } else {
+        this.showContactList = true;
+      }
+    },
+
     // CAMBIA DIMENSIONE DEL FONT
     biggerFont() {
       if (this.fontSize == false) {
@@ -509,20 +519,3 @@ const app = new Vue({
     },
   },
 });
-
-// 😀 😃 😄 😁 😆 😅 😂
-// 🤣 😊 😇 🙂 🙃 😉
-// 😌 😍 🥰 😘 😗 😙 😚
-// 😋 😛 😝 😜 🤪 🤨 🧐
-// 🤓 😎 🤩 🥳 😏 😒 😞
-// 😔 😟 😕 🙁 ☹️ 😣 😖
-//                             😫 😩 🥺 😢 😭 😤 😠
-//                             😡 🤬 🤯 😳 🥵 🥶 😱
-//                             😨 😰 😥 😓 🤗 🤔 🤭
-//                             🤫 🤥 😶 😐 😑 😬 🙄
-//                             😯 😦 😧 😮 😲 😴 🤤
-//                             😪 😵 🤐 🥴 🤢 🤮 🤧
-//                             😷 🤒 🤕 🤑 🤠 😈 👿
-//                             👹 👺 🤡 💩 👻 💀 ☠️
-//                             👽 👾 🤖 🎃 😺 😸 😹
-//                             😻 😼 😽 🙀 😿 😾

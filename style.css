@@ -1,6 +1,7 @@
 body {
     width: 100%;
     font-family: 'Lato', sans-serif;
+    background-color: rgb(217, 219, 213);
 }
 
 header {
@@ -29,6 +30,7 @@ main {
 }
 
 .left-container {
+    float: left;
     width: 35%;
     height: 100%;
     background-color: white;
@@ -36,6 +38,10 @@ main {
 }
 
 .right-container {
+    float: left;
+    height: 100%;
+    /* min-width: 375px; */
+    overflow-x: auto;
     width: 65%;
     position: relative;
 }
@@ -111,6 +117,10 @@ main {
 #last-message-time,
 #last-access {
     color: rgb(177, 177, 177);
+}
+
+.word-wrap {
+    word-wrap: break-word;
 }
 
 #last-message-time {
@@ -319,14 +329,57 @@ i {
 
 @media screen and (max-width: 768px) {
 
+    #app {
+        min-width: 0px !important;
+        /* width: 100%; */
+        /* display: block; */
+        width: 100vw;
+        max-width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        /* width: 100px !important; */
+        /* height: 100vh; */
+        /* min-width: 992px; */
+    }
+
+    body {
+        min-width: 0px !important;
+        width: 100vw !important;
+    }
+
+    header {
+        min-width: 0px !important;
+        width: 100vw !important;
+    }
+
+    main {
+        min-width: 0px !important;
+        width: 100vw !important;
+    }
+
     .right-container {
-        display: none;
+        width: 100% !important;
     }
 
     .left-container {
-        min-width: 320px;
-        position: fixed;
-        left: 0;
-        width: 100vw;
+        width: 100% !important;
+    }
+
+    .contact-profile-name span {
+        font-size: 10px !important;
+        line-height: 1rem;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .left-container {
+        display: block !important;
+    }
+
+    .fa-arrow-left {
+        display: none;
     }
 }
