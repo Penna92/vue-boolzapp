@@ -1,6 +1,5 @@
 body {
     width: 100%;
-    min-width: 992px;
     font-family: 'Lato', sans-serif;
 }
 
@@ -308,14 +307,22 @@ i {
 
 /* ------MEDIA QUERIES------ */
 
-@media screen and (max-width: 768) {
-    .right-container {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 1042px) {
+@media screen and (max-width: 1091px) {
     main {
         height: calc(100vh - 167px);
     }
 }
+
+/* @media screen and (max-width: 768px) {
+
+    .right-container {
+        display: none;
+    }
+
+    .left-container {
+        min-width: 320px;
+        position: fixed;
+        left: 0;
+        width: 100vw;
+    }
+} */
