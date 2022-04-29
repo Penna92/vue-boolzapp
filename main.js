@@ -186,6 +186,8 @@ const app = new Vue({
       inline: "nearest",
     },
     emoji: false,
+    splashPage: false,
+    welcomePage: false,
   },
 
   methods: {
@@ -200,6 +202,7 @@ const app = new Vue({
 
     // VISUALIZZARE LA CHAT CORRISPONDENTE AL CONTATTO
     changeOnClick(id) {
+      this.welcomePage = false;
       this.dropDownMenu = false;
       this.activeMessageIndex = "";
       const index = this.contacts.findIndex((contact) => {
@@ -338,7 +341,13 @@ const app = new Vue({
   },
 
   // MOUNTED
-  mounted() {},
+  mounted() {
+    this.splashPage = true;
+    setTimeout(() => {
+      this.splashPage = false;
+      this.welcomePage = true;
+    }, 2000);
+  },
 
   // COMPUTED
   computed: {

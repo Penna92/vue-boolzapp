@@ -28,7 +28,10 @@
     <header></header>
     <main>
         <div id="app" class="container d-flex px-0" :class="{'dark-mode' : darkMode == true}">
-            <div class="left-container">
+            <div v-if="splashPage == true" id="splash-image">
+                <img src="img/splash-image.jpg" alt="Splash image">
+            </div>
+            <div v-if="splashPage == false" class="left-container">
                 <div class="user-profile d-flex justify-content-between px-2">
                     <div class="user-profile-left d-flex">
                         <div class="user-profile-img">
@@ -94,7 +97,10 @@
                     </ul>
                 </div>
             </div>
-            <div class="right-container">
+            <div v-if="splashPage == false" class="right-container">
+                <div v-if="welcomePage == true" id="welcome-page">
+                    <img src="img/welcome-page.jpg" alt="Welcome page">
+                </div>
                 <div class="contact-profile d-flex justify-content-between px-2">
                     <div class="contact-profile-left d-flex justify-content-center">
                         <div class="contact-profile-img">
