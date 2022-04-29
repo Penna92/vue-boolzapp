@@ -248,7 +248,8 @@ i {
 }
 
 .dark-mode {
-    filter: invert(1);
+    /* filter: invert(1); */
+    filter: brightness(0.8);
 }
 
 .emoticons {
