@@ -249,7 +249,7 @@ i {
 
 .dark-mode {
     /* filter: invert(1); */
-    filter: brightness(0.8);
+    filter: brightness(0.8) contrast(1.2);
 }
 
 .emoticons {
@@ -372,6 +372,10 @@ i {
     .contact-profile-name span {
         font-size: 10px !important;
         line-height: 1rem;
+    }
+
+    .fa-arrow-left {
+        line-height: 80px;
     }
 }
 

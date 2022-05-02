@@ -103,8 +103,8 @@
                 </div>
                 <div class="contact-profile d-flex justify-content-between px-2">
                     <div class="contact-profile-left d-flex justify-content-center">
+                        <i @click="showChatResponsive" class="fa-solid fa-arrow-left"></i>
                         <div class="contact-profile-img">
-                            <i @click="showChatResponsive" class="fa-solid fa-arrow-left"></i>
                             <img v-if="contacts.length > 0" :src="'img/avatar' + contacts[activeIndex]?.avatar + '.jpg'"
                                 class="img-fluid" :alt="contacts[activeIndex]?.name" />
                         </div>
