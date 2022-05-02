@@ -80,7 +80,9 @@
                                     <img :src=" 'img/avatar' + users.avatar + '.jpg' " :alt=" 'Avatar ' + users.name" />
                                 </div>
                                 <div class="user-text d-inline">
-                                    <span class="fs-5">{{users.name}} <br /> </span>
+                                    <span
+                                        :class="{'smaller-font' : fontSize == false, 'bigger-font' : fontSize == true}">{{users.name}}
+                                        <br /> </span>
                                     <span id="last-message">
                                         {{filteredContacts[index]?.messages[filteredContacts[index]?.messages.length
                                         - 1]?.message}}
